@@ -1,0 +1,30 @@
+---
+- name: Create oura directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ operator_user_name }}"
+    group: "{{ operator_user_name }}"
+  with_items:
+    - "{{ operator_home }}/{{ cardano_node_deploy_folder }}/{{ oura_deploy_folder }}/config"
+    - "{{ operator_home }}/{{ cardano_node_deploy_folder }}/{{ oura_deploy_folder }}/logs"
+
+- name: Copy configuration file
+  ansible.builtin.copy:
+    src: "./daemon.toml"
+    dest: "{{ operator_home }}/{{ cardano_node_deploy_folder }}/{{ oura_deploy_folder }}/config"
+    owner: "{{ operator_user_id }}"
+    group: "{{ operator_user_name }}"
+    mode: '0644'
+
+- name: Start oura
+  ansible.builtin.docker_container:
+    image: "{{ oura_image_repo }}:{{ oura_image_tag }}"
+    name: "oura-{{ oura_image_tag }}"
+    hostname: "oura-{{ oura_image_tag }}"
+    container_default_behavior: no_defaults
+    networks:
+      - name: "{{ docker_network }}"
+    volumes:
+      - "{{ operator_home }}/{{ cardano_node_deploy_folder }}/{{ oura_deploy_folder }}:/var/oura"
+    command: daemon --config /var/oura/config/daemon.toml

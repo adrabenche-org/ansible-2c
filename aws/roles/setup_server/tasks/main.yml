@@ -20,3 +20,16 @@
     groups: docker
     append: yes
   become: yes
+
+- name: Add docker logfile rotation setup
+  ansible.builtin.copy:
+    src: daemon.json
+    dest: "/etc/docker/daemon.json"
+    group: "docker"
+    mode: "0644"
+  become: yes
+
+- name: Restart service docker
+  ansible.builtin.service:
+    name: docker
+  become: yes

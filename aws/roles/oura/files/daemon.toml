@@ -1,0 +1,12 @@
+[source]
+type = "N2N"
+address = ["Tcp", "cardano-node:3001"]
+magic = "testnet"
+
+[sink]
+type = "Logs"
+output_path = "/var/oura/logs/oura.log"
+output_format = "JSONL"
+max_bytes_per_file = 1_000_000
+max_total_files = 10
+compression = true

@@ -1,5 +1,7 @@
 # What 
-Deploy on standalone EC2 instance
+Deploy on standalone Digital Ocean Droplet, or a Virtual Box machine. Before start **access as root to the box using ssh is required**.
+
+A new user called **operator** will be created.
 
 ## Deploy
 
@@ -28,3 +30,5 @@ Or, if you want to deploy all the ansible playbooks with all the apps, just conf
 ```bash
 $ ansible-playbook -i inventory/ -l cardano-nodes install-full-stack.yml
 ```
+
+:exclamation: : **For Digital Ocean**, probably you **only** need to change the on the file `.roles/cardano_node/defaults/main.yml`, under `cardano_node_db_fs: "/dev/sdb"` to `cardano_node_db_fs: "/dev/sda"`

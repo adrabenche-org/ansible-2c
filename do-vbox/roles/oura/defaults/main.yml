@@ -1,0 +1,9 @@
+oura_deploy_folder: oura
+oura_image_tag: latest
+oura_image_repo: ghcr.io/txpipe/oura
+oura_config_files:
+  - testnet-config.json
+docker_network: "tx-network"
+network_mode: "default"
+cardano_node_address: cardano-node
+bearer: unix

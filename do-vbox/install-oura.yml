@@ -1,0 +1,5 @@
+---
+- name: Install oura
+  hosts: cardano-nodes
+  roles:
+    - oura

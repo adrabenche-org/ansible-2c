@@ -1,0 +1,12 @@
+ansible_ssh_user: "ubuntu"
+operator_home: "/home/ubuntu"
+operator_user_name: "ubuntu"
+operator_user_id: "1000"
+cardano_node_deploy_folder: deploy
+ansible_ssh_common_args: "-o ControlMaster=auto -o ControlPersist=60s -o StrictHostKeyChecking=no"
+cardano_node_name: cardano-node
+cardano_node_initial_apps:
+  - docker.io
+  - net-tools
+  - python3-docker
+  - jq

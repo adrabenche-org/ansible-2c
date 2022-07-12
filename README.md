@@ -38,3 +38,14 @@ Access the directory matching the cloud and look for the `README.md` file:
 
 * **do-vbox**: Digital Ocean and Virtual Box. For Digital Ocean It's a minimal change on the device name when you are using a different filesystem fo the cardano database.
 * **aws**: Amazon Web Services
+
+## Example AWS
+
+On this example, I'm showing how to deploy the stack on a AWS EC2 instance with an extra EBS volume for cardanodb as `/dev/xvdf. Stopped the ansible playbook before finish on purpose, else the gif will take longer.
+
+Want to see it on Digital Ocean / Linode or Vbox... **go to dark theme**  :stuck_out_tongue_winking_eye:. On this example is a Droplet with an extra FS for cardanodb. In this example, this FS is under `/dev/sda`; so, you need to check your specific case (can be `/dev/sdb` or another). Again, stopped befor finishing, else the gif will be bigger.
+
+![AWS Example](./media/aws.gif#gh-light-mode-only)
+[Watch it on asciinema](https://asciinema.org/a/507879#gh-light-mode-only)
+![AWS Example](./media/do.gif#gh-dark-mode-only)
+[Watch it on asciinema](https://asciinema.org/a/507876#gh-ldark-mode-only)
